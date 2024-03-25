@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCCoreUserProfile.Models.TbluserDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/Shared/UserLayout.cshtml";
+}
+
+
+
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div style="margin-top:20px">
+            <form>
+                <div class="row g-1">
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Search by title/role">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="inputPassword" placeholder="Location">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="inputPassword" placeholder="Experience">
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div style="margin-top:20px">
+            <div class="row">
+                <div class="col-9 text-center">
+                    <span class="bi-search" style="font-size:40px"></span>
+                    <span style="font-size:32px;font-family:'Bookman Old Style'">Find the job that is perfect for You</span>
+                </div>
+                <div class="col-3">
+                    <img src="~/images/jop.jpg" style="height:200px;width:100%" />
+                    
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:20px">
+            <span style="font-size:20px"> Popular Services</span>
+            <div class="row">
+                <div class="col"><a href="#" class="btn">Freshers</a></div>
+                <div class="col"><a href="#" class="btn">Full Stack Developer</a></div>
+                <div class="col"><a href="#" class="btn">Manual Testing</a></div>
+                <div class="col"><a href="#" class="btn">Software Engineer</a></div>
+            </div>
+        </div>
+    </main>
+</div>
+

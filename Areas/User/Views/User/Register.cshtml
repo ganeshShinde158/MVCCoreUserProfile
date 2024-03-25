@@ -1,0 +1,68 @@
+﻿@model MVCCoreUserProfile.Models.TbluserDetail
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Areas/User/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Add User</h2>
+        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th>User Name</th>
+                    <td>@Html.TextBoxFor(e => e.UserName, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <th>Full Name</th>
+                    <td>@Html.TextBoxFor(u => u.FullName, new { @class = "form-control" })</td>
+                    <th>Gender</th>
+                    <td>
+                        <select id="GenderId" name="GenderId" class="form-control">
+                            <option selected disabled>Select Gender</option>
+                            @foreach (var gender in ViewBag.AllGenders as List<SelectListItem>)
+                            {
+                                <option value="@gender.Value">@gender.Text</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Birth Date</th>
+                    <td>@Html.TextBoxFor(u => u.BirthDate, new { @class = "form-control", type = "date" })</td>
+                    <th>Email Address</th>
+                    <td>@Html.TextBoxFor(u => u.EmailAddress, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <th>Mobile Number</th>
+                    <td>@Html.TextBoxFor(u => u.MobileNumber, new { @class = "form-control" })</td>
+                    <th>Profile Photo</th>
+                    <td>
+                        <input type="file" name="photo" class="form-control" />
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        }
+        @if (ViewBag.msg != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.msg
+            </div>
+        }
+    </div>
+    
+   
+    
+
+    
+</body>
+</html>

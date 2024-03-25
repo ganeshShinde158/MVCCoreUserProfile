@@ -1,0 +1,154 @@
+﻿@model IEnumerable<MVCCoreUserProfile.Models.TblTopicContent>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TopicContent Index</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        th {
+            padding: 10px;
+        }
+
+        .topic-container {
+            margin-top: 20px;
+        }
+
+        .topic-header {
+            cursor: pointer;
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px;
+            border: 1px solid #0d6efd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .content-list {
+            display: none;
+            border: 1px solid #0d6efd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.topic-header').on('click', function () {
+                $(this).next('.content-list').slideToggle();
+            });
+
+            $('#btnAddTopic_content').on('click', function () {
+                var contentName = $('#txtContentName').val();
+                var topicId = $('#ddTopic').val();
+
+                $.ajax({
+                    url: '/Admin/Topic_contents/AddTopic_content',
+                    method: 'POST',
+                    data: { ContentName: contentName, TopicId: topicId },
+                    success: function (response) {
+                        alert(response);
+                        window.location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>TopicContent Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="txtContentName">Content Name</label>
+                            <input type="text" id="txtContentName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ddTopic">Select Topic</label>
+                            <select id="ddTopic" class="form-control">
+                                <option selected disabled>Select topic</option>
+
+                                @foreach (var topic in ViewBag.states as List<SelectListItem>)
+                                {
+                                    <option value="@topic.Value">@topic.Text</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" id="btnAddTopic_content">Add Content</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="topic-container">
+                    @foreach (var topic in ViewBag.states as List<SelectListItem>)
+                    {
+                        <div class="topic-header">
+                            @topic.Text
+                        </div>
+                        <div class="content-list">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Content ID</th>
+                                        <th>Content Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var content in Model.Where(c => c.TopicId == int.Parse(topic.Value)))
+                                    {
+                                        <tr>
+                                            <td>@content.ContentId</td>
+                                            <td>@content.ContentName</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

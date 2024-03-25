@@ -1,0 +1,121 @@
+﻿@model IEnumerable<MVCCoreUserProfile.Models.TblTopic>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        thead {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        th {
+            padding: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#btnsubmit").click(function () {
+                AddTopics();
+            })
+        })
+        function AddTopics() {
+            var topicName = $("#txttopicName").val();
+            var topic = { "TopicName": topicName };
+
+            $.ajax({
+                url: '/Admin/Topics/AddTopics',
+                method: 'post',
+                data: topic,
+                success: function (resp) {
+                    console.log(resp);
+                    alert(resp);
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("Error adding state.");
+                }
+            })
+            $("#txttopicName").val("");
+        }
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Add Topic</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label>Topic Name</label>
+                            <input type="text" id="txttopicName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="button" value="Submit" id="btnsubmit" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Topic Name </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.TopicName</td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

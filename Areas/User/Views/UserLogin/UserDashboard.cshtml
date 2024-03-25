@@ -1,0 +1,72 @@
+﻿@model MVCCoreUserProfile.Models.TbluserDetail
+
+@{
+    ViewData["Title"] = "UserDashboard";
+    Layout = "~/Areas/User/Views/Shared/UserProfileLayout.cshtml";
+}
+
+<style>
+    h2 {
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+        width: 100%;
+        max-width: 500px;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    img.img-thumbnail {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<h2>Employee Profile</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Employee Name:</th>
+                    <td>@Model.FullName</td>
+                </tr>
+                <tr>
+                    <th>Gender:</th>
+                    <td>@(Model.GenderId == 1 ? "Male" : "Female")</td>
+
+
+                </tr>
+                <tr>
+                    <th>Birth Date:</th>
+                    <td>@Model.BirthDate</td>
+                </tr>
+                <tr>
+                    <th>Email Address:</th>
+                    <td>@Model.EmailAddress</td>
+                </tr>
+                <tr>
+                    <th>Mobile No:</th>
+                    <td>@Model.MobileNumber</td>
+                </tr>
+                <tr>
+                    <th>Photo:</th>
+                    <td><img src="~/Photo/@Model.ProfilePhoto" style="height: 120px; width: 120px;" class="img-thumbnail" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

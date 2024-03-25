@@ -1,0 +1,156 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLayout</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib//bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+    .sidebar {
+    height: 100%;
+    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0d6efd;
+    color: white;
+    padding-top: 20px;
+    min-height: 100vh;
+    }
+
+    .sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    }
+
+    .sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    }
+
+    .sidebar a:hover {
+    background-color: #0a5cb6;
+    }
+
+
+    .main-content {
+    margin-left: 220px;
+    padding: 20px;
+    }
+
+
+    .navbar {
+    background-color: #0d6efd;
+    color: white;
+    }
+
+    .navbar a {
+    color: white;
+    }
+
+    .navbar-toggler-icon {
+    background-color: white;
+    }
+
+
+    .list-group-item {
+    background-color: #0d6efd;
+    color: white;
+    }
+
+    .list-group-item a {
+    color: white;
+    text-decoration: none;
+    }
+
+    .list-group-item a:hover {
+    text-decoration: none;
+    color: white;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul class="list-group">
+
+            <li class="list-group-item"><a href="/Admin/Designations/Index">Designations</a></li>
+            <li class="list-group-item"><a href="/Admin/Cities/Index">Cities</a></li>
+            <li class="list-group-item"><a href="/Admin/Genders/Index">Genders</a></li>
+            <li class="list-group-item"><a href="/Admin/Qualification/Index">Qualification</a></li>
+            <li class="list-group-item"><a href="/Admin/Topics/Index">Topics</a></li>
+            <li class="list-group-item"><a href="/Admin/Topic_contents/Index">Topic_contents</a></li>
+            <li class="list-group-item"><a href="/Admin/Content_questions/Index">Content_questions</a></li>
+            <li class="list-group-item"><a href="/Admin/User_exams/Index">User_exams</a></li>
+            <li class="list-group-item"><a href="/Admin/User_exam_questions/Index">User_exam_questions</a></li>
+
+           
+
+
+
+
+        </ul>
+    </div>
+
+
+    <div class="main-content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">User Management System</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse2">
+                    <div class="navbar-nav">
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link">About</a>
+                        <a href="#" class="nav-item nav-link">Employees</a>
+                    </div>
+                    
+                </div>
+                <form class="d-flex ml-auto">
+                    <button type="submit" class="btn btn-outline-light">Log Out</button>
+                </form>
+            </div>
+        </nav>
+        <div class="row" style="padding:20px">
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <style>
+        tr, td, th {
+            height: 10px;
+            padding: 0px;
+        }
+
+        .table > :not(caption) > * > * {
+            padding: .3rem .5rem;
+        }
+
+        .form-control {
+            font-size: 14px;
+        }
+
+        body, input, select {
+            font-size: 14px;
+        }
+    </style>
+
+
+</body>
+</html>

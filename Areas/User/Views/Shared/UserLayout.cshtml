@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobSuccessCraft</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            border-bottom: 4px solid #27ae60;
+        }
+
+        .navbar-brand img {
+            filter: brightness(0) invert(1);
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .navbar-nav .nav-link {
+            color: #ecf0f1;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #27ae60;
+            }
+
+        .container-main {
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a href="/" class="navbar-brand">
+                    <img src="~/images/mainlogo.png" height="40" alt="JobSuccessCraft">
+                   
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="/JobListings" class="nav-item nav-link">Job Listings</a>
+                        <a href="/CodingChallenges" class="nav-item nav-link">Challenges</a>
+                        <a href="/ResumeBuilder" class="nav-item nav-link">Resume Builder</a>
+                        <a href="/User/UserLogin/Index" class="nav-item nav-link">Login</a>
+                        <a href="/User/User/Register" class="nav-item nav-link">Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row" style="padding:80px">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-center">
+        <div class="container">
+            &copy; 2024 - JobSuccessCraft - <a href="/Home/Privacy" class="text-light">Privacy</a> | <a href="/Home/Terms" class="text-light">Terms</a>
+        </div>
+    </footer>
+
+  
+</body>
+</html>
